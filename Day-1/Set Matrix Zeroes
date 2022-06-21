@@ -1,0 +1,17 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        list1=[]
+        for row in range(len(matrix)):
+            for column in range(len(matrix[0])):
+                if matrix[row][column] == 0:
+                    list1.append((row, column))
+        for x, y in list1:
+            for row in range(len(matrix)):
+                matrix[row][y] = 0
+            for col in range(len(matrix[0])):
+                matrix[x][col] = 0
+            
+        
