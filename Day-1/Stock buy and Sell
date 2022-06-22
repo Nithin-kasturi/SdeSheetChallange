@@ -1,0 +1,14 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if sorted(prices,reverse=True) == prices:
+            return 0
+        elif prices==[1]:
+            return 0
+        else:
+            minp=1e9
+            maxpr=0
+            for i in range(len(prices)):
+                minp=min(minp,prices[i])
+                maxpr=max(maxpr,prices[i]-minp)
+            return maxpr
+        
