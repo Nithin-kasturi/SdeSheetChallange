@@ -1,0 +1,42 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+def merge(arr,temp,left,mid,right):
+    i=left
+    j=mid
+    k=left
+    while((i<=mid-1) and (j<=right)):
+        if(arr[i]<=arr[j]):
+            temp[k++]=arr[i++]
+        else:
+            temp[k++]=arr[j++]
+            count=count+(mid-i)
+    while(i<=mid-1):
+        temp[k++]=arr[i++]
+    while(j<=right):
+        temp[k++]=arr[j++]
+    for i in range(left,right+1):
+        arr[i]=temp[i]
+    return count
+def mergesort(arr,temp,left,right):
+    mid,count=0,0
+    if(right>left):
+        mid=left+right//2
+        count+=mergesort(arr,temp,left,mid)
+        count+=mergesort(arr,temp,mid-1,right)
+        count+=merge(arr,temp,left,mid+1,right)
+    return count
+def getInversions(arr, n) :
+    result=mergesort(arr,temp,0,len(arr)-1)
+    return result
+    
+# Taking inpit using fast I/O.
+def takeInput() :
+    n = int(input())
+    arr = list(map(int, stdin.readline().strip().split(" ")))
+    return arr, n
+
+# Main.
+arr, n = takeInput()
+print(getInversions(arr, n))
