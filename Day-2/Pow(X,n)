@@ -1,0 +1,18 @@
+class Solution(object):
+    def myPow(self, x, n):
+        if n==0:
+            return 1
+        ans=1
+        nn=abs(n)
+        while nn>1:
+            if nn%2==0:
+                x*=x
+                nn//=2
+            elif nn%2:
+                ans*=x
+                nn-=1
+        ans*=x
+        return ans if n>0 else 1/ans
+        
+        
+        
