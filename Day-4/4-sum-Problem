@@ -1,0 +1,29 @@
+class Solution(object):
+        def fourSum(self, nums, target):
+            def binarysearch(low,high,temp,nums):
+                while(low<=high):
+                    mid=(low+high)//2
+                    if nums[mid]==temp:
+                        return mid
+                    elif nums[mid]>temp:
+                        high=mid-1
+                    else:
+                        low=mid+1
+                return False
+            nums.sort()
+            arr1=[]
+            for i in range(len(nums)-3):
+                for  j in range(i+1,len(nums)-2):
+                    for k in range(j+1,len(nums)-1):
+                        temp=target-nums[i]-nums[j]-nums[k]
+                        result=binarysearch(k+1,len(nums)-1,temp,nums)
+                        if result!=False and ([nums[i],nums[j],nums[k],nums[result]] not in arr1):
+                            arr=[]
+                            arr.append(nums[i])
+                            arr.append(nums[j])
+                            arr.append(nums[k])
+                            arr.append(nums[result])
+                            arr1.append(arr)
+            return arr1
+             
+                        
