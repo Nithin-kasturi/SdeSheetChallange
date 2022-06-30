@@ -1,0 +1,16 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+def subarraysXor(arr, x):
+    # Write your code here
+    # Return an integer
+    count=0
+    for i in range(len(arr)):
+        Xor=0
+        for j in range(i,len(arr)):
+            Xor=Xor^arr[j]
+            if Xor==x:
+                count+=1
+    return count
